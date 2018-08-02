@@ -101,7 +101,8 @@ class CommentExtension extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFunction('fos_comment_can_comment', array($this, 'canComment')),
-            new \Twig_SimpleFunction('fos_comment_can_vote', array($this, 'canVote')),
+            new \Twig_SimpleFunction('fos_comment_can_vote_up', array($this, 'canVoteUp')),
+            new \Twig_SimpleFunction('fos_comment_can_vote_down', array($this, 'canVoteDown')),
             new \Twig_SimpleFunction('fos_comment_can_delete_comment', array($this, 'canDeleteComment')),
             new \Twig_SimpleFunction('fos_comment_can_edit_comment', array($this, 'canEditComment')),
             new \Twig_SimpleFunction('fos_comment_can_edit_thread', array($this, 'canEditThread')),
@@ -180,7 +181,32 @@ class CommentExtension extends \Twig_Extension
      *
      * @return bool
      */
-    public function canVote(CommentInterface $comment)
+    public function canVoteUp(CommentInterface $comment)
+    {
+        if (!$comment instanceof VotableCommentInterface) {
+            return false;
+        }
+
+        if (null === $this->voteAcl) {
+            return true;
+        }
+
+        if (null !== $this->commentAcl && !$this->commentAcl->canView($comment)) {
+            return false;
+        }
+
+        return $this->voteAcl->canCreate();
+    }
+
+    /**
+     * Checks if the comment is Votable and that the user has
+     * permission to vote.
+     *
+     * @param \FOS\CommentBundle\Model\CommentInterface $comment
+     *
+     * @return bool
+     */
+    public function canVoteDown(CommentInterface $comment)
     {
         if (!$comment instanceof VotableCommentInterface) {
             return false;

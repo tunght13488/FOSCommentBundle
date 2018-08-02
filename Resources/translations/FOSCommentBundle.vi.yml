@@ -1,0 +1,29 @@
+fos_comment_comment_new_headline_first:       'Thêm bình luận đầu tiên'
+fos_comment_comment_new_headline:             'Thêm bình luận'
+fos_comment_comment_new_submit:               'Bình luận'
+fos_comment_comment_new_cancel:               'Hủy'
+
+fos_comment_comment_edit_submit:              'Bình luận'
+fos_comment_comment_edit_cancel:              'Hủy'
+
+fos_comment_comment_reply_reply_to:           'Trả lời %name%'
+fos_comment_comment_reply_cancel:             'Hủy'
+
+fos_comment_comment_show_by:                  'Bời'
+fos_comment_comment_show_voteup:              'Thích'
+fos_comment_comment_show_votedown:            'Không thích'
+fos_comment_comment_show_reply:               'Trả lời'
+
+fos_comment_comment_vote_score:               'Điểm: '
+
+fos_comment_comment_tree_load_more:           'Tải thêm bình luận'
+
+fos_comment_rss_feed:                         RSS Feed
+
+fos_comment_thread_close:                     'Đóng chủ đề'
+fos_comment_thread_open:                      'Mở chủ đề'
+fos_comment_thread_comment_count:             '%count% bình luận'
+fos_comment_comment_edit:                     'Sửa'
+fos_comment_comment_delete:                   'Xóa'
+fos_comment_comment_undelete:                 'Khôi phục'
+fos_comment_comment_deleted:                  '[đã xóa]'

@@ -113,7 +113,7 @@ class CommentExtensionTest extends TestCase
         $voteAcl = $this->getMockBuilder('FOS\CommentBundle\Acl\VoteAclInterface')->getMock();
         $voteAcl->expects($this->never())->method('canCreate');
         $extension = new CommentExtension($commentAcl, $voteAcl);
-        $this->assertFalse($extension->canVote($comment));
+        $this->assertFalse($extension->canVoteUp($comment));
     }
 
     public function testCanVoteWhenCommentAclCanView()
@@ -124,7 +124,7 @@ class CommentExtensionTest extends TestCase
         $voteAcl = $this->getMockBuilder('FOS\CommentBundle\Acl\VoteAclInterface')->getMock();
         $voteAcl->expects($this->once())->method('canCreate')->will($this->returnValue(true));
         $extension = new CommentExtension($commentAcl, $voteAcl);
-        $this->assertTrue($extension->canVote($comment));
+        $this->assertTrue($extension->canVoteUp($comment));
     }
 
     public function testCanVoteWithNullCommentAcl()
@@ -133,7 +133,7 @@ class CommentExtensionTest extends TestCase
         $voteAcl = $this->getMockBuilder('FOS\CommentBundle\Acl\VoteAclInterface')->getMock();
         $voteAcl->expects($this->once())->method('canCreate')->will($this->returnValue(true));
         $extension = new CommentExtension(null, $voteAcl);
-        $this->assertTrue($extension->canVote($comment));
+        $this->assertTrue($extension->canVoteUp($comment));
     }
 
     public function testIsDeletedWhenStateIsDeleted()

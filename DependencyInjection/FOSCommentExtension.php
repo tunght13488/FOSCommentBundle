@@ -29,7 +29,8 @@ class FOSCommentExtension extends Extension
     /**
      * Loads and processes configuration to configure the Container.
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
+     * @throws \Exception
      *
      * @param array            $configs
      * @param ContainerBuilder $container
@@ -132,6 +133,12 @@ class FOSCommentExtension extends Extension
         $container->getAlias('fos_comment.manager.vote')->setPublic(true);
     }
 
+    /**
+     * @param ContainerBuilder $container
+     * @param array            $config
+     *
+     * @throws \Exception
+     */
     protected function loadAcl(ContainerBuilder $container, array $config)
     {
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));

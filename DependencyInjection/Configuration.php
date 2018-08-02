@@ -26,7 +26,7 @@ class Configuration implements ConfigurationInterface
     /**
      * Generates the configuration tree.
      *
-     * @return NodeInterface
+     * @return \Symfony\Component\Config\Definition\Builder\TreeBuilder
      */
     public function getConfigTreeBuilder()
     {
@@ -34,6 +34,14 @@ class Configuration implements ConfigurationInterface
 
         $treeBuilder->root('fos_comment')
             ->children()
+
+                ->arrayNode('setting')->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('max_depth')->cannotBeEmpty()->defaultValue(null)->end()
+                        ->scalarNode('allow_down_vote')->cannotBeEmpty()->defaultValue(true)->end()
+                        ->scalarNode('allow_vote_multiple_time')->cannotBeEmpty()->defaultValue(false)->end()
+                    ->end()
+                ->end()
 
                 ->scalarNode('db_driver')
                     ->cannotBeOverwritten()
